@@ -34,7 +34,7 @@
   <summary>Are you a stalker?</summary>
 
   <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-3%2C850%20hrs%2059%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-3%2C851%20hrs%2025%20mins-blue?style=flat)
 
 ![AI Code Time](http://img.shields.io/badge/AI%20Code%20Time-10%20hrs%2033%20mins-blue?style=flat)
 
@@ -53,20 +53,20 @@
 **I'm an Early 🐤** 
 
 ```text
-🌞 Morning                472 commits         ███░░░░░░░░░░░░░░░░░░░░░░   12.67 % 
-🌆 Daytime                1664 commits        ███████████░░░░░░░░░░░░░░   44.66 % 
-🌃 Evening                1205 commits        ████████░░░░░░░░░░░░░░░░░   32.34 % 
+🌞 Morning                472 commits         ███░░░░░░░░░░░░░░░░░░░░░░   12.66 % 
+🌆 Daytime                1664 commits        ███████████░░░░░░░░░░░░░░   44.65 % 
+🌃 Evening                1206 commits        ████████░░░░░░░░░░░░░░░░░   32.36 % 
 🌙 Night                  385 commits         ███░░░░░░░░░░░░░░░░░░░░░░   10.33 % 
 ```
 📅 **I'm Most Productive on Tuesday** 
 
 ```text
-Monday                   592 commits         ████░░░░░░░░░░░░░░░░░░░░░   15.89 % 
-Tuesday                  668 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.93 % 
+Monday                   592 commits         ████░░░░░░░░░░░░░░░░░░░░░   15.88 % 
+Tuesday                  668 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.92 % 
 Wednesday                647 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.36 % 
-Thursday                 545 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.63 % 
-Friday                   548 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.71 % 
-Saturday                 417 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.19 % 
+Thursday                 545 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.62 % 
+Friday                   548 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.70 % 
+Saturday                 418 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.22 % 
 Sunday                   309 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   08.29 % 
 ```
 
@@ -75,21 +75,22 @@ Sunday                   309 commits         ██░░░░░░░░░�
 
 ```text
 💬 Programming Languages: 
-R                        57 mins             █████████░░░░░░░░░░░░░░░░   37.48 % 
-C                        33 mins             █████░░░░░░░░░░░░░░░░░░░░   21.88 % 
-TypeScript               24 mins             ████░░░░░░░░░░░░░░░░░░░░░   15.94 % 
-Markdown                 18 mins             ███░░░░░░░░░░░░░░░░░░░░░░   12.35 % 
-Makefile                 8 mins              █░░░░░░░░░░░░░░░░░░░░░░░░   05.49 % 
+R                        57 mins             ████████░░░░░░░░░░░░░░░░░   32.03 % 
+C                        42 mins             ██████░░░░░░░░░░░░░░░░░░░   23.90 % 
+TypeScript               24 mins             ███░░░░░░░░░░░░░░░░░░░░░░   13.73 % 
+Makefile                 23 mins             ███░░░░░░░░░░░░░░░░░░░░░░   13.31 % 
+Markdown                 18 mins             ███░░░░░░░░░░░░░░░░░░░░░░   10.55 % 
 
 🐱‍💻 Projects: 
-42-computorv1            57 mins             █████████░░░░░░░░░░░░░░░░   37.51 % 
-42-libasm                36 mins             ██████░░░░░░░░░░░░░░░░░░░   23.55 % 
-hiruma                   28 mins             █████░░░░░░░░░░░░░░░░░░░░   18.92 % 
-game-design              18 mins             ███░░░░░░░░░░░░░░░░░░░░░░   12.35 % 
-brainfxcker              11 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   07.68 % 
+42-computorv1            57 mins             ████████░░░░░░░░░░░░░░░░░   32.05 % 
+hiruma                   44 mins             ██████░░░░░░░░░░░░░░░░░░░   24.80 % 
+42-libasm                36 mins             █████░░░░░░░░░░░░░░░░░░░░   20.12 % 
+brainfxcker              21 mins             ███░░░░░░░░░░░░░░░░░░░░░░   11.82 % 
+game-design              18 mins             ███░░░░░░░░░░░░░░░░░░░░░░   10.55 % 
 
 💻 Operating System: 
-Mac                      2 hrs 33 mins       █████████████████████████   100.00 % 
+Mac                      2 hrs 42 mins       ███████████████████████░░   90.70 % 
+Linux                    16 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   09.30 % 
 ```
 
 🤖 **AI Coding This Week** 
