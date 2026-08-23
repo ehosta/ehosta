@@ -34,7 +34,7 @@
   <summary>Are you a stalker?</summary>
 
   <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-3%2C851%20hrs%2025%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-3%2C852%20hrs%203%20mins-blue?style=flat)
 
 ![AI Code Time](http://img.shields.io/badge/AI%20Code%20Time-10%20hrs%2033%20mins-blue?style=flat)
 
@@ -75,22 +75,22 @@ Sunday                   309 commits         ██░░░░░░░░░�
 
 ```text
 💬 Programming Languages: 
-R                        57 mins             ████████░░░░░░░░░░░░░░░░░   32.03 % 
-C                        42 mins             ██████░░░░░░░░░░░░░░░░░░░   23.90 % 
-TypeScript               24 mins             ███░░░░░░░░░░░░░░░░░░░░░░   13.73 % 
-Makefile                 23 mins             ███░░░░░░░░░░░░░░░░░░░░░░   13.31 % 
-Markdown                 18 mins             ███░░░░░░░░░░░░░░░░░░░░░░   10.55 % 
+R                        57 mins             ███████░░░░░░░░░░░░░░░░░░   26.36 % 
+TypeScript               57 mins             ███████░░░░░░░░░░░░░░░░░░   26.36 % 
+C                        48 mins             ██████░░░░░░░░░░░░░░░░░░░   22.30 % 
+Makefile                 23 mins             ███░░░░░░░░░░░░░░░░░░░░░░   10.96 % 
+Markdown                 18 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   08.68 % 
 
 🐱‍💻 Projects: 
-42-computorv1            57 mins             ████████░░░░░░░░░░░░░░░░░   32.05 % 
-hiruma                   44 mins             ██████░░░░░░░░░░░░░░░░░░░   24.80 % 
-42-libasm                36 mins             █████░░░░░░░░░░░░░░░░░░░░   20.12 % 
-brainfxcker              21 mins             ███░░░░░░░░░░░░░░░░░░░░░░   11.82 % 
-game-design              18 mins             ███░░░░░░░░░░░░░░░░░░░░░░   10.55 % 
+hiruma                   1 hr 17 mins        █████████░░░░░░░░░░░░░░░░   35.47 % 
+42-computorv1            57 mins             ███████░░░░░░░░░░░░░░░░░░   26.38 % 
+42-libasm                36 mins             ████░░░░░░░░░░░░░░░░░░░░░   16.56 % 
+brainfxcker              21 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   09.73 % 
+game-design              18 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   08.68 % 
 
 💻 Operating System: 
-Mac                      2 hrs 42 mins       ███████████████████████░░   90.70 % 
-Linux                    16 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   09.30 % 
+Mac                      2 hrs 42 mins       ███████████████████░░░░░░   74.66 % 
+Linux                    55 mins             ██████░░░░░░░░░░░░░░░░░░░   25.34 % 
 ```
 
 🤖 **AI Coding This Week** 
