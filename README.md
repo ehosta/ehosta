@@ -34,7 +34,7 @@
   <summary>Are you a stalker?</summary>
 
   <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-3%2C852%20hrs%207%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-3%2C853%20hrs%2022%20mins-blue?style=flat)
 
 ![AI Code Time](http://img.shields.io/badge/AI%20Code%20Time-10%20hrs%2033%20mins-blue?style=flat)
 
@@ -53,20 +53,20 @@
 **I'm an Early 🐤** 
 
 ```text
-🌞 Morning                474 commits         ███░░░░░░░░░░░░░░░░░░░░░░   12.71 % 
-🌆 Daytime                1665 commits        ███████████░░░░░░░░░░░░░░   44.64 % 
-🌃 Evening                1206 commits        ████████░░░░░░░░░░░░░░░░░   32.33 % 
+🌞 Morning                474 commits         ███░░░░░░░░░░░░░░░░░░░░░░   12.70 % 
+🌆 Daytime                1665 commits        ███████████░░░░░░░░░░░░░░   44.63 % 
+🌃 Evening                1207 commits        ████████░░░░░░░░░░░░░░░░░   32.35 % 
 🌙 Night                  385 commits         ███░░░░░░░░░░░░░░░░░░░░░░   10.32 % 
 ```
 📅 **I'm Most Productive on Tuesday** 
 
 ```text
 Monday                   595 commits         ████░░░░░░░░░░░░░░░░░░░░░   15.95 % 
-Tuesday                  668 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.91 % 
-Wednesday                647 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.35 % 
+Tuesday                  669 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.93 % 
+Wednesday                647 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.34 % 
 Thursday                 545 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.61 % 
 Friday                   548 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.69 % 
-Saturday                 418 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.21 % 
+Saturday                 418 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.20 % 
 Sunday                   309 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   08.28 % 
 ```
 
@@ -75,22 +75,22 @@ Sunday                   309 commits         ██░░░░░░░░░�
 
 ```text
 💬 Programming Languages: 
-TypeScript               1 hr                ███████░░░░░░░░░░░░░░░░░░   27.25 % 
-R                        57 mins             ██████░░░░░░░░░░░░░░░░░░░   25.97 % 
-C                        48 mins             █████░░░░░░░░░░░░░░░░░░░░   21.97 % 
-Makefile                 23 mins             ███░░░░░░░░░░░░░░░░░░░░░░   10.79 % 
-Markdown                 18 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   08.55 % 
+TypeScript               1 hr 57 mins        ██████████░░░░░░░░░░░░░░░   39.77 % 
+C                        1 hr 3 mins         █████░░░░░░░░░░░░░░░░░░░░   21.50 % 
+R                        57 mins             █████░░░░░░░░░░░░░░░░░░░░   19.47 % 
+Makefile                 23 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   08.09 % 
+Markdown                 18 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   06.41 % 
 
 🐱‍💻 Projects: 
-hiruma                   1 hr 20 mins        █████████░░░░░░░░░░░░░░░░   36.43 % 
-42-computorv1            57 mins             ██████░░░░░░░░░░░░░░░░░░░   25.99 % 
-42-libasm                36 mins             ████░░░░░░░░░░░░░░░░░░░░░   16.31 % 
-brainfxcker              21 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   09.59 % 
-game-design              18 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   08.55 % 
+hiruma                   2 hrs 19 mins       ████████████░░░░░░░░░░░░░   47.31 % 
+42-computorv1            57 mins             █████░░░░░░░░░░░░░░░░░░░░   19.48 % 
+42-libasm                36 mins             ███░░░░░░░░░░░░░░░░░░░░░░   12.23 % 
+brainfxcker              36 mins             ███░░░░░░░░░░░░░░░░░░░░░░   12.23 % 
+game-design              18 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   06.41 % 
 
 💻 Operating System: 
-Mac                      2 hrs 42 mins       ██████████████████░░░░░░░   73.55 % 
-Linux                    58 mins             ███████░░░░░░░░░░░░░░░░░░   26.45 % 
+Mac                      3 hrs 56 mins       ████████████████████░░░░░   80.17 % 
+Linux                    58 mins             █████░░░░░░░░░░░░░░░░░░░░   19.83 % 
 ```
 
 🤖 **AI Coding This Week** 
