@@ -34,7 +34,7 @@
   <summary>Are you a stalker?</summary>
 
   <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-3%2C853%20hrs%2022%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-3%2C856%20hrs%2048%20mins-blue?style=flat)
 
 ![AI Code Time](http://img.shields.io/badge/AI%20Code%20Time-10%20hrs%2033%20mins-blue?style=flat)
 
@@ -42,7 +42,7 @@
 
 > 📦 91.8 kB Used in GitHub's Storage 
  > 
-> 🏆 960 Contributions in the Year 2026
+> 🏆 962 Contributions in the Year 2026
  > 
 > 💼 Opted to Hire
  > 
@@ -53,20 +53,20 @@
 **I'm an Early 🐤** 
 
 ```text
-🌞 Morning                474 commits         ███░░░░░░░░░░░░░░░░░░░░░░   12.70 % 
-🌆 Daytime                1665 commits        ███████████░░░░░░░░░░░░░░   44.63 % 
-🌃 Evening                1207 commits        ████████░░░░░░░░░░░░░░░░░   32.35 % 
-🌙 Night                  385 commits         ███░░░░░░░░░░░░░░░░░░░░░░   10.32 % 
+🌞 Morning                474 commits         ███░░░░░░░░░░░░░░░░░░░░░░   12.69 % 
+🌆 Daytime                1666 commits        ███████████░░░░░░░░░░░░░░   44.62 % 
+🌃 Evening                1209 commits        ████████░░░░░░░░░░░░░░░░░   32.38 % 
+🌙 Night                  385 commits         ███░░░░░░░░░░░░░░░░░░░░░░   10.31 % 
 ```
 📅 **I'm Most Productive on Tuesday** 
 
 ```text
-Monday                   595 commits         ████░░░░░░░░░░░░░░░░░░░░░   15.95 % 
-Tuesday                  669 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.93 % 
-Wednesday                647 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.34 % 
-Thursday                 545 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.61 % 
-Friday                   548 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.69 % 
-Saturday                 418 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.20 % 
+Monday                   595 commits         ████░░░░░░░░░░░░░░░░░░░░░   15.93 % 
+Tuesday                  670 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.94 % 
+Wednesday                649 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.38 % 
+Thursday                 545 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.60 % 
+Friday                   548 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.68 % 
+Saturday                 418 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.19 % 
 Sunday                   309 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   08.28 % 
 ```
 
@@ -75,22 +75,22 @@ Sunday                   309 commits         ██░░░░░░░░░�
 
 ```text
 💬 Programming Languages: 
-TypeScript               1 hr 57 mins        ██████████░░░░░░░░░░░░░░░   39.77 % 
-C                        1 hr 3 mins         █████░░░░░░░░░░░░░░░░░░░░   21.50 % 
-R                        57 mins             █████░░░░░░░░░░░░░░░░░░░░   19.47 % 
-Makefile                 23 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   08.09 % 
-Markdown                 18 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   06.41 % 
+TypeScript               5 hrs 25 mins       █████████████████░░░░░░░░   66.04 % 
+C                        1 hr 3 mins         ███░░░░░░░░░░░░░░░░░░░░░░   12.91 % 
+R                        57 mins             ███░░░░░░░░░░░░░░░░░░░░░░   11.63 % 
+Makefile                 23 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   04.83 % 
+Prisma                   9 mins              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.88 % 
 
 🐱‍💻 Projects: 
-hiruma                   2 hrs 19 mins       ████████████░░░░░░░░░░░░░   47.31 % 
-42-computorv1            57 mins             █████░░░░░░░░░░░░░░░░░░░░   19.48 % 
-42-libasm                36 mins             ███░░░░░░░░░░░░░░░░░░░░░░   12.23 % 
-brainfxcker              36 mins             ███░░░░░░░░░░░░░░░░░░░░░░   12.23 % 
-game-design              18 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   06.41 % 
+hiruma                   5 hrs 56 mins       ██████████████████░░░░░░░   72.29 % 
+42-computorv1            57 mins             ███░░░░░░░░░░░░░░░░░░░░░░   11.63 % 
+brainfxcker              36 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   07.37 % 
+42-libasm                36 mins             ██░░░░░░░░░░░░░░░░░░░░░░░   07.30 % 
+42-piscine_rushes        5 mins              ░░░░░░░░░░░░░░░░░░░░░░░░░   01.16 % 
 
 💻 Operating System: 
-Mac                      3 hrs 56 mins       ████████████████████░░░░░   80.17 % 
-Linux                    58 mins             █████░░░░░░░░░░░░░░░░░░░░   19.83 % 
+Mac                      7 hrs 2 mins        █████████████████████░░░░   85.69 % 
+Linux                    1 hr 10 mins        ████░░░░░░░░░░░░░░░░░░░░░   14.31 % 
 ```
 
 🤖 **AI Coding This Week** 
