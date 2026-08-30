@@ -34,7 +34,7 @@
   <summary>Are you a stalker?</summary>
 
   <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-3%2C863%20hrs%2011%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-3%2C867%20hrs%2025%20mins-blue?style=flat)
 
 ![AI Code Time](http://img.shields.io/badge/AI%20Code%20Time-10%20hrs%2033%20mins-blue?style=flat)
 
@@ -75,20 +75,19 @@ Sunday                   309 commits         ██░░░░░░░░░�
 
 ```text
 💬 Programming Languages: 
-TypeScript               10 hrs 58 mins      ███████████████████████░░   91.63 % 
-Prisma                   22 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   03.16 % 
-C                        20 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   02.86 % 
-HTML                     16 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   02.24 % 
-JSON                     0 secs              ░░░░░░░░░░░░░░░░░░░░░░░░░   00.06 % 
+TypeScript               14 hrs 26 mins      ████████████████████████░   94.07 % 
+Prisma                   22 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   02.48 % 
+HTML                     16 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.74 % 
+C                        14 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.61 % 
+JSON                     0 secs              ░░░░░░░░░░░░░░░░░░░░░░░░░   00.05 % 
 
 🐱‍💻 Projects: 
-hiruma                   11 hrs 38 mins      ████████████████████████░   97.14 % 
-brainfxcker              14 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   02.07 % 
-42-piscine_rushes        5 mins              ░░░░░░░░░░░░░░░░░░░░░░░░░   00.80 % 
+hiruma                   15 hrs 6 mins       █████████████████████████   98.39 % 
+brainfxcker              14 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.61 % 
 
 💻 Operating System: 
-Mac                      6 hrs 42 mins       ██████████████░░░░░░░░░░░   56.02 % 
-Linux                    5 hrs 16 mins       ███████████░░░░░░░░░░░░░░   43.98 % 
+Linux                    8 hrs 38 mins       ██████████████░░░░░░░░░░░   56.29 % 
+Mac                      6 hrs 42 mins       ███████████░░░░░░░░░░░░░░   43.71 % 
 ```
 
 🤖 **AI Coding This Week** 
