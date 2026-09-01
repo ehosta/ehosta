@@ -34,7 +34,7 @@
   <summary>Are you a stalker?</summary>
 
   <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-3%2C867%20hrs%2025%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-3%2C869%20hrs%2033%20mins-blue?style=flat)
 
 ![AI Code Time](http://img.shields.io/badge/AI%20Code%20Time-10%20hrs%2033%20mins-blue?style=flat)
 
@@ -53,21 +53,21 @@
 **I'm an Early 🐤** 
 
 ```text
-🌞 Morning                474 commits         ███░░░░░░░░░░░░░░░░░░░░░░   12.67 % 
-🌆 Daytime                1670 commits        ███████████░░░░░░░░░░░░░░   44.64 % 
-🌃 Evening                1212 commits        ████████░░░░░░░░░░░░░░░░░   32.40 % 
-🌙 Night                  385 commits         ███░░░░░░░░░░░░░░░░░░░░░░   10.29 % 
+🌞 Morning                474 commits         ███░░░░░░░░░░░░░░░░░░░░░░   12.66 % 
+🌆 Daytime                1670 commits        ███████████░░░░░░░░░░░░░░   44.60 % 
+🌃 Evening                1214 commits        ████████░░░░░░░░░░░░░░░░░   32.43 % 
+🌙 Night                  386 commits         ███░░░░░░░░░░░░░░░░░░░░░░   10.31 % 
 ```
 📅 **I'm Most Productive on Tuesday** 
 
 ```text
-Monday                   596 commits         ████░░░░░░░░░░░░░░░░░░░░░   15.93 % 
-Tuesday                  670 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.91 % 
-Wednesday                650 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.38 % 
-Thursday                 548 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.65 % 
-Friday                   549 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.68 % 
-Saturday                 419 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.20 % 
-Sunday                   309 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   08.26 % 
+Monday                   596 commits         ████░░░░░░░░░░░░░░░░░░░░░   15.92 % 
+Tuesday                  673 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.98 % 
+Wednesday                650 commits         ████░░░░░░░░░░░░░░░░░░░░░   17.36 % 
+Thursday                 548 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.64 % 
+Friday                   549 commits         ████░░░░░░░░░░░░░░░░░░░░░   14.66 % 
+Saturday                 419 commits         ███░░░░░░░░░░░░░░░░░░░░░░   11.19 % 
+Sunday                   309 commits         ██░░░░░░░░░░░░░░░░░░░░░░░   08.25 % 
 ```
 
 
@@ -75,19 +75,22 @@ Sunday                   309 commits         ██░░░░░░░░░�
 
 ```text
 💬 Programming Languages: 
-TypeScript               14 hrs 23 mins      ████████████████████████░   94.10 % 
-Prisma                   22 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   02.49 % 
-HTML                     16 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.75 % 
-C                        14 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.62 % 
-Docker                   0 secs              ░░░░░░░░░░░░░░░░░░░░░░░░░   00.04 % 
+TypeScript               14 hrs 37 mins      ███████████████████████░░   90.27 % 
+C                        56 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   05.85 % 
+Prisma                   19 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   02.05 % 
+HTML                     16 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.65 % 
+jsonc                    1 min               ░░░░░░░░░░░░░░░░░░░░░░░░░   00.14 % 
 
 🐱‍💻 Projects: 
-hiruma                   15 hrs 2 mins       █████████████████████████   98.38 % 
-brainfxcker              14 mins             ░░░░░░░░░░░░░░░░░░░░░░░░░   01.62 % 
+hiruma                   15 hrs 13 mins      ████████████████████████░   94.00 % 
+intra-uuid-7b426ffa-8fdb-29 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   03.08 % 
+intra-uuid-79b772f1-135a-26 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   02.77 % 
+zed                      1 min               ░░░░░░░░░░░░░░░░░░░░░░░░░   00.14 % 
+ft_transcendance         0 secs              ░░░░░░░░░░░░░░░░░░░░░░░░░   00.01 % 
 
 💻 Operating System: 
-Linux                    8 hrs 35 mins       ██████████████░░░░░░░░░░░   56.13 % 
-Mac                      6 hrs 42 mins       ███████████░░░░░░░░░░░░░░   43.87 % 
+Linux                    9 hrs 44 mins       ███████████████░░░░░░░░░░   60.19 % 
+Mac                      6 hrs 26 mins       ██████████░░░░░░░░░░░░░░░   39.81 % 
 ```
 
 🤖 **AI Coding This Week** 
