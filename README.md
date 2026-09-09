@@ -34,7 +34,7 @@
   <summary>Are you a stalker?</summary>
 
   <!--START_SECTION:waka-->
-![Code Time](http://img.shields.io/badge/Code%20Time-3%2C882%20hrs%2015%20mins-blue?style=flat)
+![Code Time](http://img.shields.io/badge/Code%20Time-3%2C887%20hrs%2029%20mins-blue?style=flat)
 
 ![AI Code Time](http://img.shields.io/badge/AI%20Code%20Time-10%20hrs%2033%20mins-blue?style=flat)
 
@@ -75,22 +75,22 @@ Sunday                   309 commits         ██░░░░░░░░░�
 
 ```text
 💬 Programming Languages: 
-TypeScript               5 hrs 48 mins       ███████████░░░░░░░░░░░░░░   45.02 % 
-C                        3 hrs 38 mins       ███████░░░░░░░░░░░░░░░░░░   28.26 % 
-Makefile                 1 hr 48 mins        ████░░░░░░░░░░░░░░░░░░░░░   14.03 % 
-Prisma                   34 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   04.49 % 
-JSON                     24 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   03.14 % 
+TypeScript               6 hrs 14 mins       ███████████░░░░░░░░░░░░░░   43.26 % 
+C                        3 hrs 54 mins       ███████░░░░░░░░░░░░░░░░░░   27.07 % 
+Makefile                 2 hrs 2 mins        ████░░░░░░░░░░░░░░░░░░░░░   14.15 % 
+Prisma                   43 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   04.99 % 
+Bash                     34 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   03.97 % 
 
 🐱‍💻 Projects: 
-hiruma                   7 hrs 51 mins       ███████████████░░░░░░░░░░   61.03 % 
-ft_transcendance         1 hr 22 mins        ███░░░░░░░░░░░░░░░░░░░░░░   10.70 % 
-intra-uuid-17e35b9a-edc9-44 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   05.71 % 
-intra-uuid-3a089910-f0e9-43 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   05.68 % 
-intra-uuid-d846b0f2-f918-41 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   05.37 % 
+ft_transcendance         5 hrs 16 mins       █████████░░░░░░░░░░░░░░░░   36.48 % 
+hiruma                   5 hrs 3 mins        █████████░░░░░░░░░░░░░░░░   34.99 % 
+intra-uuid-17e35b9a-edc9-44 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   05.09 % 
+intra-uuid-3a089910-f0e9-43 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   05.07 % 
+intra-uuid-d846b0f2-f918-41 mins             █░░░░░░░░░░░░░░░░░░░░░░░░   04.79 % 
 
 💻 Operating System: 
-Linux                    7 hrs 35 mins       ███████████████░░░░░░░░░░   58.91 % 
-Mac                      5 hrs 17 mins       ██████████░░░░░░░░░░░░░░░   41.09 % 
+Linux                    11 hrs 57 mins      █████████████████████░░░░   82.80 % 
+Mac                      2 hrs 28 mins       ████░░░░░░░░░░░░░░░░░░░░░   17.20 % 
 ```
 
 🤖 **AI Coding This Week** 
