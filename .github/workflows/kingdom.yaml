@@ -1,0 +1,49 @@
+name: Kingdom of repos
+
+on:
+  schedule:
+    - cron: '17 4 * * *'   # every morning, 04:17 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/kingdom/**'
+      - '.github/workflows/kingdom.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kingdom
+  cancel-in-progress: true
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Draw the chart
+        run: node scripts/kingdom/index.mjs
+        env:
+          GITHUB_USER: ${{ github.repository_owner }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          OUT: assets/kingdom.svg
+          MAX_REPOS: '26'
+          INCLUDE_FORKS: 'false'
+          # Keep everything except these ( `*` allowed ):
+          IGNORE_REPOS: ''
+          # Or map only these, and nothing else. Wins over IGNORE_REPOS being empty:
+          ONLY_REPOS: ''
+
+      - name: Commit if it changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/kingdom.svg
+          git diff --staged --quiet || git commit -m 'chore: redraw the kingdom'
+          git push
