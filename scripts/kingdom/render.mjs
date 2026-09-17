@@ -73,13 +73,14 @@ function placeSettlements(repos, field, GW, GH, rand) {
   const cx = GW / 2;
   const cy = GH / 2;
   const placed = [];
-  const maxW = repos[0]?.weight || 1;
 
   repos.forEach((repo, rank) => {
-    const share = repo.weight / maxW;
-    // important places sit inland and central; minor ones drift to the margins
-    const wantR = (0.16 + (1 - share) * 0.72) * Math.min(GW, GH) * 0.62;
-    const minGap = rank === 0 ? 0 : 5.5 + share * 5;
+    // Rank position, not raw weight: a single 180k-star repo would otherwise
+    // push every other share to ~0 and pile them all on the shoreline.
+    const spread = repos.length > 1 ? rank / (repos.length - 1) : 0;
+    const standing = 1 - spread;
+    const wantR = (0.16 + spread * 0.72) * Math.min(GW, GH) * 0.62;
+    const minGap = rank === 0 ? 0 : 5.5 + standing * 5;
 
     let best = null;
     let bestScore = -Infinity;
@@ -100,11 +101,11 @@ function placeSettlements(repos, field, GW, GH, rand) {
     if (!best) best = cands[Math.floor(rand() * cands.length)];
 
     placed.push({
-      repo, rank, share,
+      repo, rank, share: standing,
       gx: best[0] + rand() * 0.6 - 0.3,
       gy: best[1] + rand() * 0.6 - 0.3,
       name: placeName(repo, rand),
-      tier: rank === 0 ? 3 : share > 0.45 ? 2 : share > 0.16 ? 1 : 0,
+      tier: rank === 0 ? 3 : spread < 0.2 ? 2 : spread < 0.5 ? 1 : 0,
     });
   });
 
