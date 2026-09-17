@@ -36,10 +36,11 @@ jobs:
           MAX_REPOS: '26'
           INCLUDE_FORKS: 'false'
           # Keep everything except these ( `*` allowed ):
-          IGNORE_REPOS: ''
+          IGNORE_REPOS: 'ehosta'
           # Or map only these, and nothing else. Wins over IGNORE_REPOS being empty:
           ONLY_REPOS: ''
           EXTRA_REPOS: 'mdourdoi/ft_transcendance, hiruma/hiruma'
+          CAPITAL: 'hiruma'
 
       - name: Commit if it changed
         run: |
