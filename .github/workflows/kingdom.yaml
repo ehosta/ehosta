@@ -39,6 +39,7 @@ jobs:
           IGNORE_REPOS: ''
           # Or map only these, and nothing else. Wins over IGNORE_REPOS being empty:
           ONLY_REPOS: ''
+          EXTRA_REPOS: 'mdourdoi/ft_transcendance, hiruma/hiruma'
 
       - name: Commit if it changed
         run: |
