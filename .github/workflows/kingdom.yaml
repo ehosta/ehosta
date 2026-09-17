@@ -39,7 +39,7 @@ jobs:
           # Keep everything except these ( `*` allowed ):
           IGNORE_REPOS: ''
           # Or map only these, and nothing else. Wins over IGNORE_REPOS being empty:
-          ONLY_REPOS: '42-libasm, 42-Inception, bunny, brainfxcker, 42-Hotrace, 42-AlCu, 42-webserv, 42-ft_shmup, 42-libunit, 42-cpp_09, 42-ft_nm, 42-cub3D, 42-Philosophers, 42-minishell, ObanaiBot'
+          ONLY_REPOS: '42-libasm, 42-Inception, bunny, brainfxcker, 42-Hotrace, 42-AlCu, 42-webserv, 42-ft_shmup, 42-libunit, 42-cpp_09, 42-ft_nm, 42-cub3D, 42-Philosophers, 42-minishell, ObanaiBot, mdourdoi/ft_transcendance, HirumaBot/hiruma, SpinUp-CLI/spinup'
           EXTRA_REPOS: 'mdourdoi/ft_transcendance, HirumaBot/hiruma, SpinUp-CLI/spinup'
           CAPITAL: 'hiruma'
 
