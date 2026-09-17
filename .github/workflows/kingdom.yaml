@@ -31,7 +31,8 @@ jobs:
         run: node scripts/kingdom/index.mjs
         env:
           GITHUB_USER: ${{ github.repository_owner }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          ALLOW_PRIVATE: 'true'
           OUT: assets/kingdom.svg
           MAX_REPOS: '26'
           INCLUDE_FORKS: 'false'
