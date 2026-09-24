@@ -1,0 +1,51 @@
+name: Departures board
+
+on:
+  schedule:
+    - cron: '17 */3 * * *'   # every 3h — the clock on the board is the last redraw
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/board/**'
+      - '.github/workflows/departures.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: departures
+  cancel-in-progress: true
+
+jobs:
+  draw:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Draw the board
+        run: node scripts/board/index.mjs
+        env:
+          GITHUB_USER: ${{ github.repository_owner }}
+          # classic PAT with `repo` scope, so private repos (HirumaBot/hiruma) can board too
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          OUT: assets/departures.svg
+          TZ_NAME: Europe/Paris
+          # bare name = yours, owner/name = anyone's. Order doesn't matter, the board sorts by last push.
+          REPOS: >-
+            42-libasm, 42-Inception, bunny, brainfxcker, 42-Hotrace, 42-AlCu,
+            42-webserv, 42-ft_shmup, 42-libunit, 42-cpp_09, 42-ft_nm, 42-cub3D,
+            42-Philosophers, 42-minishell, ObanaiBot,
+            mdourdoi/ft_transcendance, HirumaBot/hiruma, SpinUp-CLI/spinup
+
+      - name: Commit if it changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/departures.svg
+          git diff --staged --quiet || git commit -m 'chore: update departures'
+          git push
