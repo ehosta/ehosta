@@ -6,7 +6,7 @@
 // in order on a loop, each taking off from where the previous one landed, so
 // there are only ever one or two planes in the air.
 
-import { MONO, langOf, hash, esc } from '../lib.mjs';
+import { MONO, PLANE, langOf, hash, esc } from '../lib.mjs';
 
 const W = 920, H = 540;
 const CX = 280, CY = 270, R = 236;
@@ -15,7 +15,6 @@ const SLOT = 1.8;  // seconds between two take-offs
 const FLY = 3.4;   // seconds in the air
 const LEGS = 10;   // flights replayed
 const GREEN = '#3ddc84';
-const PLANE = 'M2 14.5l6-.4 5.6-9.1h3.2l-3 9 7.2-.5 2.5-3.3h2.3l-1.4 4.8 1.4 4.8h-2.3l-2.5-3.3-7.2-.5 3 9h-3.2L8 16.9l-6-.4z';
 
 /** "42-minishell" → "MNS", "brainfxcker" → "BRN", unique within `taken` */
 function iata(name, taken) {

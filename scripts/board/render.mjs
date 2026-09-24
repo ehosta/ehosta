@@ -5,7 +5,7 @@
 // letters rattle through a few random characters before settling. At rest
 // (and under prefers-reduced-motion) the strip sits on the final glyph.
 
-import { MONO, langOf, mulberry32, hash, esc, flightNo } from '../lib.mjs';
+import { MONO, PLANE, langOf, mulberry32, hash, esc, flightNo } from '../lib.mjs';
 
 const CW = 18;          // flap width
 const CH = 26;          // flap height
@@ -103,8 +103,6 @@ function flaps(str, len, x0, y0, row, col0, rand) {
   return [bg, txt, seam];
 }
 
-// a little plane, pointing right, about 28px wide
-const PLANE = 'M2 14.5l6-.4 5.6-9.1h3.2l-3 9 7.2-.5 2.5-3.3h2.3l-1.4 4.8 1.4 4.8h-2.3l-2.5-3.3-7.2-.5 3 9h-3.2L8 16.9l-6-.4z';
 
 export function renderBoard({ login, profile, repos, passengers = [], timeZone, now }) {
   const rand = mulberry32(hash(login) ^ Math.floor(now / 86400000));
@@ -206,7 +204,7 @@ ${keyframes}
 <rect width="${W}" height="${H}" rx="14" fill="#0b0c0e"/>
 <rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="13" fill="none" stroke="#26282d"/>
 
-<g transform="translate(24 30)"><path d="${PLANE}" transform="translate(38 0) scale(-1.35 1.35)" fill="#ffcc00"/></g>
+<g transform="translate(24 30)"><path d="${PLANE}" transform="scale(1.35)" fill="#ffcc00"/></g>
 <text x="68" y="56" font-size="30" fill="#f2f2f2" letter-spacing="3">DEPARTURES</text>
 <text x="70" y="78" font-size="13" fill="#8a8f98" font-style="italic" letter-spacing="2">DÉPARTS · ABFLUG · SALIDAS</text>
 <text x="${W - 24}" y="58" font-size="34" fill="#ffb000" text-anchor="end">${clock[0]}<tspan class="colon">:</tspan>${clock[1]}</text>

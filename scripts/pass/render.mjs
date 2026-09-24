@@ -1,11 +1,10 @@
 // render.mjs — a boarding pass for one visitor, bound for their main language.
 
-import { MONO, langOf, hash, esc, mulberry32 } from '../lib.mjs';
+import { MONO, PLANE, langOf, hash, esc, mulberry32 } from '../lib.mjs';
 
 const W = 780, H = 290;
 const STUB = 580;   // where the perforation is
 const INK = '#16171a', MUTED = '#7a7468', PAPER = '#f6f2e8', YELLOW = '#ffcc00';
-const PLANE = 'M2 14.5l6-.4 5.6-9.1h3.2l-3 9 7.2-.5 2.5-3.3h2.3l-1.4 4.8 1.4 4.8h-2.3l-2.5-3.3-7.2-.5 3 9h-3.2L8 16.9l-6-.4z';
 
 const cut = (s, n) => ([...s].length > n ? [...s].slice(0, n - 1).join('') + '…' : s);
 

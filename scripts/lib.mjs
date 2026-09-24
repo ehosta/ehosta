@@ -1,5 +1,9 @@
 // lib.mjs — what the board, the radar and the boarding pass share.
 
+// a plane seen from above, nose pointing right (+x), about 29×29 around (14.5, 14.5).
+// Pointing right matters: animateMotion's rotate="auto" lines +x up with the path.
+export const PLANE = 'M27 14.5l-6-.4-5.6-9.1h-3.2l3 9-7.2-.5-2.5-3.3h-2.3l1.4 4.8-1.4 4.8h2.3l2.5-3.3 7.2-.5-3 9h3.2L21 16.9l6-.4z';
+
 export const MONO = `ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace`;
 
 // short code, and a colour legible on black
