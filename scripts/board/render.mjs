@@ -5,13 +5,14 @@
 // letters rattle through a few random characters before settling. At rest
 // (and under prefers-reduced-motion) the strip sits on the final glyph.
 
+import { MONO, langOf, mulberry32, hash, esc, flightNo } from '../lib.mjs';
+
 const CW = 18;          // flap width
 const CH = 26;          // flap height
 const PITCH = CW + 2;   // flap + gap
 const COL_GAP = 14;     // space between columns
 const ROW_H = CH + 6;
 const STEP = 0.075;     // seconds per flip
-const MONO = `ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberation Mono',monospace`;
 const FLIP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
 const COLUMNS = [
@@ -22,48 +23,12 @@ const COLUMNS = [
   { key: 'remark', label: 'REMARKS', len: 9 },
 ];
 
-// short code for the GATE column, and a colour legible on black
-const LANGS = {
-  TypeScript: ['TS', '#4a9eff'], JavaScript: ['JS', '#f1e05a'],
-  C: ['C', '#a8b9cc'], 'C++': ['CPP', '#f34b7d'], Python: ['PY', '#5a9fd4'],
-  Rust: ['RS', '#dea584'], Go: ['GO', '#00add8'], Shell: ['SH', '#89e051'],
-  Makefile: ['MK', '#7fbf3f'], Assembly: ['ASM', '#c79a5b'],
-  Dockerfile: ['DKR', '#2496ed'], HTML: ['HTM', '#e34c26'],
-  CSS: ['CSS', '#9b6bdf'], Java: ['JAV', '#d98b2b'], Brainfuck: ['BF', '#d0d0d0'],
-  Vue: ['VUE', '#41b883'], PHP: ['PHP', '#8892bf'], Ruby: ['RB', '#e0115f'],
-};
-
 const REMARKS = {
   BOARDING: '#3ddc84', 'ON TIME': '#f2f2f2', DELAYED: '#ffb000',
-  DEPARTED: '#7c7c7c', CANCELLED: '#ff4d4d', PRIVATE: '#6cb6ff',
+  DEPARTED: '#7c7c7c', CANCELLED: '#ff4d4d',
 };
 
-function mulberry32(seed) {
-  return () => {
-    seed |= 0; seed = (seed + 0x6d2b79f5) | 0;
-    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
-}
-
-function hash(str) {
-  let h = 2166136261;
-  for (const c of str) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
-  return h >>> 0;
-}
-
-const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-
-/** "HirumaBot" → "HB", "SpinUp-CLI" → "SU", "mdourdoi" → "MD" */
-function airline(owner) {
-  const head = owner.split(/[-_.]/)[0];
-  const caps = head.replace(/[^A-Z]/g, '');
-  return (caps.length >= 2 ? caps : head).slice(0, 2).toUpperCase();
-}
-
 function remark(repo, now) {
-  if (repo.private) return 'PRIVATE';
   if (repo.archived) return 'CANCELLED';
   const days = (now - Date.parse(repo.pushed_at)) / 86400000;
   if (days <= 7) return 'BOARDING';
@@ -74,14 +39,13 @@ function remark(repo, now) {
 
 function toFlight(repo, now, timeZone) {
   const [owner, name] = repo.full_name.split('/');
-  const n = 100 + (hash(repo.full_name) % 900);
-  const [gate, color] = LANGS[repo.language] || ['--', '#5a5a5a'];
+  const [gate, color] = langOf(repo.language);
   return {
     time: new Intl.DateTimeFormat('en-GB', {
       timeZone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
     }).format(new Date(repo.pushed_at)),
     dest: name.toUpperCase(),
-    flight: `${airline(owner)} ${n}`,
+    flight: flightNo(repo.full_name),
     gate,
     color,
     remark: remark(repo, now),
@@ -119,7 +83,7 @@ function flaps(str, len, x0, y0, row, col0, rand) {
 // a little plane, pointing right, about 28px wide
 const PLANE = 'M2 14.5l6-.4 5.6-9.1h3.2l-3 9 7.2-.5 2.5-3.3h2.3l-1.4 4.8 1.4 4.8h-2.3l-2.5-3.3-7.2-.5 3 9h-3.2L8 16.9l-6-.4z';
 
-export function renderBoard({ login, profile, repos, timeZone, now }) {
+export function renderBoard({ login, profile, repos, passengers = [], timeZone, now }) {
   const rand = mulberry32(hash(login) ^ Math.floor(now / 86400000));
   const flights = repos
     .slice()
@@ -180,6 +144,7 @@ export function renderBoard({ login, profile, repos, timeZone, now }) {
     ...(partners.length ? [`CODESHARE WITH ${partners.join(' · ').toUpperCase()}`] : []),
     ...flights.filter((f) => f.description && !f.private)
       .map((f) => `${f.flight} ${f.dest} — ${f.description}`),
+    ...(passengers.length ? [`WELCOME ABOARD ${passengers.slice(0, 8).map((p) => '@' + p.login).join(' · ')}`] : []),
     `THANK YOU FOR FLYING ${login.toUpperCase()}`,
   ];
   // one <text> per item, placed on an estimated monospace advance; the

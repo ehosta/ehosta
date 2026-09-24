@@ -7,22 +7,10 @@
 //   OUT           output path                    (default: assets/departures.svg)
 //   TZ_NAME       timezone for the TIME column   (default: Europe/Paris)
 
-import { writeFile, mkdir } from 'node:fs/promises';
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { renderBoard } from './render.mjs';
-
-async function gh(path, token) {
-  const res = await fetch(`https://api.github.com${path}`, {
-    headers: {
-      Accept: 'application/vnd.github+json',
-      'User-Agent': 'departures-board',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-    },
-  });
-  if (res.status === 404) return null; // gone, private without access, or a typo
-  if (!res.ok) throw new Error(`GitHub API ${res.status} on ${path}`);
-  return res.json();
-}
+import { gh, repoList } from '../lib.mjs';
 
 async function main() {
   const user = process.env.GITHUB_USER;
@@ -30,9 +18,7 @@ async function main() {
   const token = process.env.GITHUB_TOKEN;
   const out = process.env.OUT || 'assets/departures.svg';
 
-  const names = String(process.env.REPOS || '')
-    .split(',').map((s) => s.trim()).filter(Boolean)
-    .map((n) => (n.includes('/') ? n : `${user}/${n}`));
+  const names = repoList(process.env.REPOS, user);
   if (!names.length) throw new Error('REPOS is empty');
 
   const repos = [];
@@ -42,11 +28,14 @@ async function main() {
     repos.push(r);
   }
   const profile = await gh(`/users/${encodeURIComponent(user)}`, token);
+  // written by the boarding-pass workflow, newest first
+  const passengers = await readFile('assets/passengers.json', 'utf8').then(JSON.parse, () => []);
 
   const svg = renderBoard({
     login: user,
     profile,
     repos,
+    passengers,
     timeZone: process.env.TZ_NAME || 'Europe/Paris',
     now: new Date(),
   });
