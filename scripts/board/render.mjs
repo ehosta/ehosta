@@ -26,18 +26,20 @@ const COLUMNS = [
 // how each status looks; `blink` ones flash once the flaps have settled
 const REMARKS = {
   BOARDING: ['#3ddc84', true], 'LAST CALL': ['#ffcc00', true], 'GO TO GATE': ['#3ddc84'],
-  'ON TIME': ['#f2f2f2'], EXPECTED: ['#ffb000'], DELAYED: ['#ffb000'], DIVERTED: ['#c58cff'],
+  'IN FLIGHT': ['#6cb6ff'], 'ON TIME': ['#f2f2f2'], EXPECTED: ['#ffb000'], DELAYED: ['#ffb000'], DIVERTED: ['#c58cff'],
   'GATE CLOSED': ['#ff8a4d'], DEPARTED: ['#7c7c7c'], LANDED: ['#6c8aa8'], CANCELLED: ['#ff4d4d'],
 };
 
 /**
- * [status, text on the board]. Mostly the time since the last push, walked
+ * [status, text on the board]. Work pushed but not merged yet is IN FLIGHT.
+ * Otherwise it's mostly the time since the last push, walked
  * through an airport's day; a repo gone quiet with issues still open is
  * DIVERTED; and some delayed ones print an estimated time instead, picked
  * at random but only reshuffled once a day.
  */
 function remark(repo, now) {
   if (repo.archived) return ['CANCELLED', 'CANCELLED'];
+  if (repo._inFlight) return ['IN FLIGHT', 'IN FLIGHT'];
   const days = (now - Date.parse(repo.pushed_at)) / 86400000;
   const rand = mulberry32(hash(repo.full_name) ^ Math.floor(now / 86400000));
   if (days <= 2) return ['BOARDING', 'BOARDING'];
@@ -75,6 +77,7 @@ function toFlight(repo, now, timeZone) {
     owner,
     private: repo.private,
     description: repo.description,
+    inFlight: repo._inFlight,
     stars: repo.stargazers_count || 0,
   };
 }
@@ -163,6 +166,9 @@ export function renderBoard({ login, profile, repos, passengers = [], timeZone, 
   const partners = [...new Set(flights.map((f) => f.owner).filter((o) => o.toLowerCase() !== login.toLowerCase()))];
   const items = [
     ...(partners.length ? [`CODESHARE WITH ${partners.join(' · ').toUpperCase()}`] : []),
+    // what's in the air, except where it would leak a private branch or PR
+    ...flights.filter((f) => f.inFlight && !f.private).map((f) => `${f.flight} ${f.dest} — IN FLIGHT: ${
+      f.inFlight.pr ? `#${f.inFlight.pr} ${f.inFlight.title}` : f.inFlight.branch}`),
     ...flights.filter((f) => f.description && !f.private)
       .map((f) => `${f.flight} ${f.dest} — ${f.description}`),
     ...(passengers.length ? [`WELCOME ABOARD ${passengers.slice(0, 8).map((p) => '@' + p.login).join(' · ')}`] : []),

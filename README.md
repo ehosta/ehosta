@@ -6,8 +6,9 @@
 <summary><sub>what do the remarks mean?</sub></summary>
 <br>
 
-| remark | last push |
+| remark | when |
 |---|---|
+| 🔵 `IN FLIGHT` | work took off but hasn't landed: a branch I pushed in the last 2 weeks that isn't merged, or an open PR of mine |
 | 🟢 `BOARDING` | ≤ 2 days |
 | 🟡 `LAST CALL` | ≤ 1 week |
 | 🟢 `GO TO GATE` | ≤ 3 weeks |
