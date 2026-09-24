@@ -2,15 +2,18 @@
 //
 // Airports sit on a polar grid: the angle is stable (hash of the name), the
 // distance from the tower in the middle is how long ago the repo was pushed.
-// Commits are replayed in order: each one is a plane flying from wherever
-// the previous commit landed to the repo it touched. A commit in the same
-// repo as the one before it circles that airport in a holding pattern.
+// Consecutive commits in the same repo make one flight. Flights are replayed
+// in order on a loop, each taking off from where the previous one landed, so
+// there are only ever one or two planes in the air.
 
 import { MONO, langOf, hash, esc } from '../lib.mjs';
 
 const W = 920, H = 540;
 const CX = 280, CY = 270, R = 236;
 const SWEEP = 6;   // seconds per radar turn
+const SLOT = 1.8;  // seconds between two take-offs
+const FLY = 3.4;   // seconds in the air
+const LEGS = 10;   // flights replayed
 const GREEN = '#3ddc84';
 const PLANE = 'M2 14.5l6-.4 5.6-9.1h3.2l-3 9 7.2-.5 2.5-3.3h2.3l-1.4 4.8 1.4 4.8h-2.3l-2.5-3.3-7.2-.5 3 9h-3.2L8 16.9l-6-.4z';
 
@@ -52,33 +55,35 @@ export function renderRadar({ login, repos, commits, now, timeZone, days }) {
   });
   const tower = { x: CX, y: CY, code: 'TWR' };
 
-  // ---- flights: commits in chronological order, each from the previous landing
+  // ---- flights: runs of commits in one repo, oldest first
   const chrono = commits.slice().sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
-  let prev = tower, flights = '', trails = '';
-  chrono.forEach((c, i) => {
-    const to = airports.get(c.repo);
-    if (!to) return;
-    let d;
-    if (prev === to) {
-      // holding pattern: one lap around the airport
-      const r = 16;
-      d = `M${f1(to.x + r)} ${f1(to.y)}a${r} ${r} 0 1 1 ${-2 * r} 0a${r} ${r} 0 1 1 ${2 * r} 0`;
-    } else {
-      const mx = (prev.x + to.x) / 2, my = (prev.y + to.y) / 2;
-      const dx = to.x - prev.x, dy = to.y - prev.y;
-      const bend = (i % 2 ? 0.22 : -0.22);
-      d = `M${f1(prev.x)} ${f1(prev.y)}Q${f1(mx - dy * bend)} ${f1(my + dx * bend)} ${f1(to.x)} ${f1(to.y)}`;
-      trails += `<path d="${d}"/>`;
-    }
-    const dur = 7 + (hash(c.sha) % 5);
-    const begin = -((hash(c.sha) % 70) / 10);
-    const motion = (rot) => `<animateMotion dur="${dur}s" begin="${begin}s" repeatCount="indefinite" path="${d}"${rot ? ' rotate="auto"' : ''}/>`;
-    const fade = `<animate attributeName="opacity" dur="${dur}s" begin="${begin}s" repeatCount="indefinite" values="0;1;1;0" keyTimes="0;.12;.85;1"/>`;
-    flights += `<g opacity="0">${fade}`
-      + `<g>${motion(true)}<path d="${PLANE}" transform="translate(-9 -9) scale(.62)" fill="${to.color}"/></g>`
-      + `<g>${motion(false)}<text x="10" y="-8" class="sha">${c.sha.slice(0, 7)}</text></g>`
-      + '</g>';
-    prev = to;
+  const legs = [];
+  for (const c of chrono) {
+    const last = legs.at(-1);
+    if (last?.repo === c.repo) last.commits.push(c);
+    else if (airports.has(c.repo)) legs.push({ repo: c.repo, commits: [c] });
+  }
+  legs.forEach((l, i) => { l.from = i ? airports.get(legs[i - 1].repo) : tower; l.to = airports.get(l.repo); });
+  const shown = legs.slice(-LEGS);
+  const T = (shown.length - 1) * SLOT + FLY + 2;
+  const kt = (...ts) => ts.map((t) => (t / T).toFixed(4)).join(';');
+  let flights = '', trails = '';
+  shown.forEach((l, i) => {
+    const { from, to } = l;
+    const mx = (from.x + to.x) / 2, my = (from.y + to.y) / 2;
+    const dx = to.x - from.x, dy = to.y - from.y;
+    const bend = i % 2 ? 0.2 : -0.2;
+    const d = `M${f1(from.x)} ${f1(from.y)}Q${f1(mx - dy * bend)} ${f1(my + dx * bend)} ${f1(to.x)} ${f1(to.y)}`;
+    trails += `<path d="${d}"/>`;
+    const t0 = i * SLOT, t1 = t0 + FLY;
+    const loop = `dur="${T.toFixed(2)}s" repeatCount="indefinite"`;
+    flights += `<g opacity="0"><animate attributeName="opacity" ${loop} values="0;0;1;1;0;0" keyTimes="${kt(0, t0, t0 + 0.3, t1 - 0.3, t1, T)}"/>`
+      + `<animateMotion ${loop} path="${d}" rotate="auto" calcMode="linear" keyPoints="0;0;1;1" keyTimes="${kt(0, t0, t1, T)}"/>`
+      + `<path d="${PLANE}" transform="translate(-9 -9) scale(.62)" fill="${to.color}"/></g>`
+      // the destination flares on touchdown
+      + `<circle cx="${f1(to.x)}" cy="${f1(to.y)}" r="7" fill="none" stroke="${to.color}" stroke-width="2" opacity="0">`
+      + `<animate attributeName="opacity" ${loop} values="0;0;.9;0;0" keyTimes="${kt(0, t1 - 0.05, t1, Math.min(t1 + 1, T - 0.01), T)}"/>`
+      + `<animate attributeName="r" ${loop} values="7;7;7;22;22" keyTimes="${kt(0, t1 - 0.05, t1, Math.min(t1 + 1, T - 0.01), T)}"/></circle>`;
   });
 
   // ---- scope: rings, bearings, the sweep
@@ -105,9 +110,9 @@ export function renderRadar({ login, repos, commits, now, timeZone, days }) {
   let blips = '';
   for (const a of airports.values()) {
     const delay = ((((a.deg % 360) + 360) % 360) / 360 * SWEEP).toFixed(2);
-    blips += `<g><circle cx="${f1(a.x)}" cy="${f1(a.y)}" r="9" fill="${a.color}" class="ping" style="animation-delay:${delay}s"/>`
+    blips += `<g>${a.active ? `<circle cx="${f1(a.x)}" cy="${f1(a.y)}" r="9" fill="${a.color}" class="ping" style="animation-delay:${delay}s"/>` : ''}`
       + `<circle cx="${f1(a.x)}" cy="${f1(a.y)}" r="${a.active ? 4.5 : 3}" fill="${a.active ? a.color : '#0b0c0e'}" stroke="${a.color}" stroke-width="1.5"/>`
-      + `<text x="${f1(a.x)}" y="${f1(a.y + 18)}" class="code"${a.active ? '' : ' opacity=".55"'}>${a.code}</text></g>`;
+      + `<text x="${f1(a.x)}" y="${f1(a.y + 18)}" class="code"${a.active ? '' : ' opacity=".35"'}>${a.code}</text></g>`;
   }
 
   // ---- traffic panel
@@ -116,18 +121,17 @@ export function renderRadar({ login, repos, commits, now, timeZone, days }) {
     timeZone, day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
   }).formatToParts(d).map((p) => [p.type, p.value]));
   const stamp = (d) => { const p = parts(d); return `${p.day} ${p.month.slice(0, 3).toUpperCase()} ${p.hour}:${p.minute}`; };
-  const recent = commits.slice().sort((a, b) => Date.parse(b.date) - Date.parse(a.date)).slice(0, 10);
+  const recent = legs.slice().reverse().slice(0, 10);
   let panel = '';
-  recent.forEach((c, i) => {
+  recent.forEach((l, i) => {
     const y = 128 + i * 38;
-    const a = airports.get(c.repo);
-    const at = chrono.indexOf(c);
-    const from = at > 0 ? airports.get(chrono[at - 1].repo) : tower;
+    const c = l.commits.at(-1);
+    const n = l.commits.length;
     const msg = c.private ? '[ CLASSIFIED ]' : c.message.length > 44 ? c.message.slice(0, 43) + '…' : c.message;
     panel += `<text x="${PX}" y="${y}" class="row">${stamp(new Date(c.date))}`
-      + `<tspan x="${PX + 118}" fill="#8a8f98">${from?.code || 'TWR'} →</tspan>`
-      + `<tspan x="${PX + 170}" fill="${a.color}">${a.code}</tspan>`
-      + `<tspan x="${PX + 212}" fill="#8a8f98">${c.sha.slice(0, 7)}</tspan></text>`
+      + `<tspan x="${PX + 118}" fill="#8a8f98">${l.from.code} →</tspan>`
+      + `<tspan x="${PX + 170}" fill="${l.to.color}">${l.to.code}</tspan>`
+      + `<tspan x="${PX + 212}" fill="#8a8f98">${n > 1 ? `×${n} COMMITS` : c.sha.slice(0, 7)}</tspan></text>`
       + `<text x="${PX}" y="${y + 15}" class="msg"${c.private ? ' fill="#6cb6ff"' : ''}>${esc(msg)}</text>`;
   });
   if (!recent.length) panel = `<text x="${PX}" y="140" class="row">NO TRAFFIC — CLEAR SKIES</text>`;
@@ -145,7 +149,6 @@ text{font-family:${MONO};font-weight:700}
 .ping{opacity:0;animation:ping ${SWEEP}s ease-out infinite}
 @keyframes ping{0%{opacity:.55}35%,100%{opacity:0}}
 .code{font-size:10px;fill:#e6e6e6;text-anchor:middle;letter-spacing:1px}
-.sha{font-size:9px;fill:#f2f2f2;opacity:.75}
 .row{font-size:11px;fill:#f2f2f2}
 .msg{font-size:10.5px;fill:#8a8f98;font-weight:500}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
@@ -168,7 +171,7 @@ ${blips}
 ${flights}
 
 <text x="${PX}" y="56" font-size="22" fill="#f2f2f2" letter-spacing="3">LIVE TRAFFIC</text>
-<text x="${PX}" y="78" font-size="11" fill="#8a8f98" letter-spacing="1.5">LATEST ${commits.length} COMMITS · ${days} DAYS · TWR = ${esc(login.toUpperCase())}</text>
+<text x="${PX}" y="78" font-size="11" fill="#8a8f98" letter-spacing="1.5">${commits.length} COMMITS · ${legs.length} FLIGHTS · ${days} DAYS · TWR = ${esc(login.toUpperCase())}</text>
 <rect x="${PX}" y="94" width="${W - PX - 24}" height="3" fill="#ffcc00"/>
 ${panel}
 </svg>

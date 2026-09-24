@@ -25,7 +25,7 @@ async function main() {
     const r = await gh(`/repos/${full}`, token);
     if (!r) { console.warn(`skipping ${full} — not found or no access`); continue; }
     repos.push(r);
-    const list = await gh(`/repos/${full}/commits?author=${encodeURIComponent(user)}&since=${since}&per_page=20`, token) || [];
+    const list = await gh(`/repos/${full}/commits?author=${encodeURIComponent(user)}&since=${since}&per_page=50`, token) || [];
     for (const c of list) {
       commits.push({
         repo: r.full_name,
@@ -36,9 +36,9 @@ async function main() {
       });
     }
   }
-  // the radar gets busy past a couple dozen planes
+  // enough history to fill the last few flights; the renderer keeps the latest ones
   commits.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-  commits.splice(24);
+  commits.splice(120);
 
   const svg = renderRadar({
     login: user, repos, commits, days,
@@ -46,7 +46,7 @@ async function main() {
   });
   await mkdir(dirname(out), { recursive: true });
   await writeFile(out, svg, 'utf8');
-  console.log(`${out} — ${repos.length} airports, ${commits.length} flights, ${(svg.length / 1024).toFixed(0)} kB`);
+  console.log(`${out} — ${repos.length} airports, ${commits.length} commits, ${(svg.length / 1024).toFixed(0)} kB`);
 }
 
 main().catch((err) => { console.error(err.message); process.exit(1); });
