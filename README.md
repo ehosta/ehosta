@@ -2,6 +2,25 @@
   <img src="assets/departures.svg" alt="Departures board: each of my repos is a flight" width="100%">
 </p>
 
+<details>
+<summary><sub>what do the remarks mean?</sub></summary>
+<br>
+
+| remark | last push |
+|---|---|
+| 🟢 `BOARDING` | ≤ 2 days |
+| 🟡 `LAST CALL` | ≤ 1 week |
+| 🟢 `GO TO GATE` | ≤ 3 weeks |
+| ⚪ `ON TIME` | ≤ 45 days |
+| 🟠 `DELAYED` / `EXP hh:mm` | ≤ 5 months (the estimate is reshuffled daily) |
+| 🟣 `DIVERTED` | quiet for 45+ days with 3+ open issues |
+| 🟠 `GATE CLOSED` | ≤ 1 year |
+| ⚫ `DEPARTED` | ≤ 3 years |
+| 🔵 `LANDED` | older, done and dusted |
+| 🔴 `CANCELLED` | archived |
+
+</details>
+
 <p align="center">
   <img src="assets/radar.svg" alt="Radar: my latest commits flying between my repos" width="100%">
 </p>

@@ -20,26 +20,48 @@ const COLUMNS = [
   { key: 'dest', label: 'DESTINATION', len: 16 },
   { key: 'flight', label: 'FLIGHT', len: 6 },
   { key: 'gate', label: 'GATE', len: 4 },
-  { key: 'remark', label: 'REMARKS', len: 9 },
+  { key: 'remark', label: 'REMARKS', len: 11 },
 ];
 
+// how each status looks; `blink` ones flash once the flaps have settled
 const REMARKS = {
-  BOARDING: '#3ddc84', 'ON TIME': '#f2f2f2', DELAYED: '#ffb000',
-  DEPARTED: '#7c7c7c', CANCELLED: '#ff4d4d',
+  BOARDING: ['#3ddc84', true], 'LAST CALL': ['#ffcc00', true], 'GO TO GATE': ['#3ddc84'],
+  'ON TIME': ['#f2f2f2'], EXPECTED: ['#ffb000'], DELAYED: ['#ffb000'], DIVERTED: ['#c58cff'],
+  'GATE CLOSED': ['#ff8a4d'], DEPARTED: ['#7c7c7c'], LANDED: ['#6c8aa8'], CANCELLED: ['#ff4d4d'],
 };
 
+/**
+ * [status, text on the board]. Mostly the time since the last push, walked
+ * through an airport's day; a repo gone quiet with issues still open is
+ * DIVERTED; and some delayed ones print an estimated time instead, picked
+ * at random but only reshuffled once a day.
+ */
 function remark(repo, now) {
-  if (repo.archived) return 'CANCELLED';
+  if (repo.archived) return ['CANCELLED', 'CANCELLED'];
   const days = (now - Date.parse(repo.pushed_at)) / 86400000;
-  if (days <= 7) return 'BOARDING';
-  if (days <= 45) return 'ON TIME';
-  if (days <= 365) return 'DELAYED';
-  return 'DEPARTED';
+  const rand = mulberry32(hash(repo.full_name) ^ Math.floor(now / 86400000));
+  if (days <= 2) return ['BOARDING', 'BOARDING'];
+  if (days <= 7) return ['LAST CALL', 'LAST CALL'];
+  if (days <= 21) return ['GO TO GATE', 'GO TO GATE'];
+  if (days <= 45) return ['ON TIME', 'ON TIME'];
+  if (repo.open_issues_count >= 3 && days <= 365) return ['DIVERTED', 'DIVERTED'];
+  if (days <= 150) {
+    if (rand() < 0.4) {
+      const hh = String(Math.floor(rand() * 24)).padStart(2, '0');
+      const mm = String(Math.floor(rand() * 12) * 5).padStart(2, '0');
+      return ['EXPECTED', `EXP ${hh}:${mm}`];
+    }
+    return ['DELAYED', 'DELAYED'];
+  }
+  if (days <= 365) return ['GATE CLOSED', 'GATE CLOSED'];
+  if (days <= 3 * 365) return ['DEPARTED', 'DEPARTED'];
+  return ['LANDED', 'LANDED'];
 }
 
 function toFlight(repo, now, timeZone) {
   const [owner, name] = repo.full_name.split('/');
   const [gate, color] = langOf(repo.language);
+  const [status, text] = remark(repo, now);
   return {
     time: new Intl.DateTimeFormat('en-GB', {
       timeZone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
@@ -48,7 +70,8 @@ function toFlight(repo, now, timeZone) {
     flight: flightNo(repo.full_name),
     gate,
     color,
-    remark: remark(repo, now),
+    status,
+    remark: text,
     owner,
     private: repo.private,
     description: repo.description,
@@ -108,8 +131,8 @@ export function renderBoard({ login, profile, repos, passengers = [], timeZone, 
     COLUMNS.forEach((c, ci) => {
       const [b, t, s] = flaps(f[c.key], c.len, colX[ci], y, i, col0, rand);
       bg += b; seam += s; col0 += c.len;
-      const fill = c.key === 'remark' ? REMARKS[f.remark] : c.key === 'gate' ? f.color : '#f2f2f2';
-      const blink = c.key === 'remark' && f.remark === 'BOARDING' ? ' class="blink"' : '';
+      const fill = c.key === 'remark' ? REMARKS[f.status][0] : c.key === 'gate' ? f.color : '#f2f2f2';
+      const blink = c.key === 'remark' && REMARKS[f.status][1] ? ' class="blink"' : '';
       txt += `<g fill="${fill}"${blink}>${t}</g>`;
     });
     rows += `<g><rect x="18" y="${y + 3}" width="6" height="${CH - 6}" rx="1.5" fill="${f.color}"/>`
