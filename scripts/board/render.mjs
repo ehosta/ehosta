@@ -107,7 +107,7 @@ function flaps(str, len, x0, y0, row, col0, rand) {
 }
 
 
-export function renderBoard({ login, profile, repos, passengers = [], timeZone, now }) {
+export function renderBoard({ login, profile, repos, timeZone, now }) {
   const rand = mulberry32(hash(login) ^ Math.floor(now / 86400000));
   const flights = repos
     .slice()
@@ -171,7 +171,6 @@ export function renderBoard({ login, profile, repos, passengers = [], timeZone, 
       f.inFlight.pr ? `#${f.inFlight.pr} ${f.inFlight.title}` : f.inFlight.branch}`),
     ...flights.filter((f) => f.description && !f.private)
       .map((f) => `${f.flight} ${f.dest} — ${f.description}`),
-    ...(passengers.length ? [`WELCOME ABOARD ${passengers.slice(0, 8).map((p) => '@' + p.login).join(' · ')}`] : []),
     `THANK YOU FOR FLYING ${login.toUpperCase()}`,
   ];
   // one <text> per item, placed on an estimated monospace advance; the

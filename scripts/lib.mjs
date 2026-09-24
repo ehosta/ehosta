@@ -1,4 +1,4 @@
-// lib.mjs — what the board, the radar and the boarding pass share.
+// lib.mjs — what the board and the radar share.
 
 // a plane seen from above, nose pointing right (+x), about 29×29 around (14.5, 14.5).
 // Pointing right matters: animateMotion's rotate="auto" lines +x up with the path.

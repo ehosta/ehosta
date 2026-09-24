@@ -7,7 +7,7 @@
 //   OUT           output path                    (default: assets/departures.svg)
 //   TZ_NAME       timezone for the TIME column   (default: Europe/Paris)
 
-import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir } from 'node:fs/promises';
 import { dirname } from 'node:path';
 import { renderBoard } from './render.mjs';
 import { gh, repoList } from '../lib.mjs';
@@ -57,14 +57,11 @@ async function main() {
     repos.push(r);
   }
   const profile = await gh(`/users/${encodeURIComponent(user)}`, token);
-  // written by the boarding-pass workflow, newest first
-  const passengers = await readFile('assets/passengers.json', 'utf8').then(JSON.parse, () => []);
 
   const svg = renderBoard({
     login: user,
     profile,
     repos,
-    passengers,
     timeZone: process.env.TZ_NAME || 'Europe/Paris',
     now: new Date(),
   });
