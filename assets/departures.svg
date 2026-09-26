@@ -23,7 +23,7 @@ text{font-family:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,'Liberatio
 <g transform="translate(24 30)"><path d="M27 14.5l-6-.4-5.6-9.1h-3.2l3 9-7.2-.5-2.5-3.3h-2.3l1.4 4.8-1.4 4.8h2.3l2.5-3.3 7.2-.5-3 9h3.2L21 16.9l6-.4z" transform="scale(1.35)" fill="#ffcc00"/></g>
 <text x="68" y="56" font-size="30" fill="#f2f2f2" letter-spacing="3">DEPARTURES</text>
 <text x="70" y="78" font-size="13" fill="#8a8f98" font-style="italic" letter-spacing="2">DÉPARTS · ABFLUG · SALIDAS</text>
-<text x="932" y="58" font-size="34" fill="#ffb000" text-anchor="end">07<tspan class="colon">:</tspan>07</text>
+<text x="932" y="58" font-size="34" fill="#ffb000" text-anchor="end">13<tspan class="colon">:</tspan>32</text>
 <text x="932" y="78" font-size="11" fill="#8a8f98" text-anchor="end" letter-spacing="1.5">UPDATED 26 SEPT 2026 · PARIS</text>
 <rect x="18" y="94" width="920" height="3" fill="#ffcc00"/>
 <text x="24" y="120" font-size="11" fill="#c8ccd2" letter-spacing="1.5">EHOSTA INTERNATIONAL   ·   18 FLIGHTS   ·   6 GATES   ·   ★ 6   ·   58 FOLLOWERS</text>
