@@ -16,5 +16,6 @@
 
 Use [brainfxcker](https://github.com/TON_USER/brainfxcker) to understand
 ```console
-$ ./brainfxcker stage.bf && ./a.out
+$ echo "<text above>" > amazing-text.bf
+$ ./brainfxcker amazing-text.bf && ./a.out
 ```
