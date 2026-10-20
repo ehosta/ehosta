@@ -14,7 +14,7 @@
 ++<-]>.<+++++++[>----------<-]>-.<++++++[>------<-]>.
 ```
 
-Use [brainfxcker](https://github.com/TON_USER/brainfxcker) to understand
+Use [brainfxcker](https://github.com/ehosta/brainfxcker) to understand
 ```console
 $ echo "<text above>" > amazing-text.bf
 $ ./brainfxcker amazing-text.bf && ./a.out
